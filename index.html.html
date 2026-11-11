@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مختبر الوعي السيبراني</title>
+<style>
+:root{--navy:#0b1730;--blue:#1769aa;--cyan:#36c5df;--ink:#17243b;--muted:#62718a;--bg:#f3f7fc;--white:#fff;--red:#c83c4b;--green:#16845b}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+header{background:linear-gradient(120deg,#09152d,#123d70);color:white;padding:34px 18px;text-align:center}
+header .tag{display:inline-block;border:1px solid #ffffff55;border-radius:30px;padding:4px 14px;font-size:13px;color:#c8f5ff}
+h1{margin:12px 0 4px;font-size:clamp(27px,5vw,42px)}header p{margin:0;color:#d8e8fb}
+main{max-width:900px;margin:24px auto;padding:0 16px}
+.card{background:white;border:1px solid #e2eaf4;border-radius:18px;padding:22px;margin:16px 0;box-shadow:0 8px 24px #10284a0b}
+h2{font-size:21px;margin:0 0 10px;color:#123d70}
+.notice{background:#eaf6ff;border-right:4px solid var(--blue);padding:12px 15px;border-radius:10px}
+.message{background:#fbfcff;border:1px solid #dce5f0;border-radius:14px;padding:17px}
+.fake{direction:ltr;text-align:left;display:block;background:#f1f5fa;padding:12px;border-radius:9px;color:#174f85;overflow-wrap:anywhere;font-family:Arial,sans-serif}
+button{border:0;border-radius:10px;padding:12px 18px;font-size:16px;font-weight:bold;cursor:pointer;margin:6px 4px 0 0}
+.primary{background:var(--blue);color:white}.secondary{background:#e9eff7;color:#18395e}
+button:focus{outline:3px solid #79d8ed;outline-offset:2px}
+.result{display:none;margin-top:14px;padding:14px;border-radius:12px}
+.good{background:#e8f7ef;border:1px solid #b8e5cb;color:#145c3e}
+.bad{background:#fff0f0;border:1px solid #f0c4c8;color:#8b2631}
+.options{display:grid;gap:10px}.options button{text-align:right;background:#f4f7fb;border:1px solid #dce5f0;color:#17395e}
+.options button:hover{background:#e7f2ff}
+footer{text-align:center;color:var(--muted);padding:24px;font-size:13px}
+.small{font-size:13px;color:var(--muted)}
+ul{padding-right:22px}
+@media(min-width:650px){.options{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <span class="tag">تجربة تعليمية آمنة</span>
+  <h1>مختبر الوعي السيبراني</h1>
+  <p>تعرّف على خدع الروابط المشبوهة وكيف تتصرف بذكاء</p>
+</header>
+<main>
+  <section class="card">
+    <h2>ما الذي ستتعلمه؟</h2>
+    <p>قد يستخدم المحتالون رسائل مستعجلة أو روابط تشبه المواقع الأصلية لخداع المستخدم. هذه الصفحة تعرض مثالاً تمثيلياً فقط؛ لا تتصل بأي موقع خارجي ولا تجمع أي بيانات.</p>
+    <div class="notice"><strong>تنبيه:</strong> لا تدخل كلمة مرورك أو بياناتك الشخصية في أي رابط وصل إليك دون التحقق منه.</div>
+  </section>
+
+  <section class="card">
+    <h2>الموقف الأول: رسالة عاجلة</h2>
+    <div class="message">
+      <strong>رسالة تجريبية — ليست رسالة حقيقية</strong>
+      <p>«تنبيه: سيتم إيقاف حسابك خلال دقائق! اضغط هنا فوراً لتأكيد بياناتك»</p>
+      <span class="fake">https://example.invalid/verify-account</span>
+      <p class="small">العنوان أعلاه نطاق تجريبي غير قابل للاستخدام.</p>
+    </div>
+    <p><strong>ما التصرف الأكثر أماناً؟</strong></p>
+    <div class="options">
+      <button onclick="show('a1','wrong')">أضغط بسرعة حتى لا يتوقف الحساب</button>
+      <button onclick="show('a1','right')">أتوقف، ولا أفتح الرابط، وأتحقق من الجهة عبر موقعها الرسمي</button>
+    </div>
+    <div id="a1" class="result"></div>
+  </section>
+
+  <section class="card">
+    <h2>الموقف الثاني: كيف تكتشف الرابط المشبوه؟</h2>
+    <p>اختر العلامة التي قد تشير إلى محاولة تصيّد:</p>
+    <div class="options">
+      <button onclick="show('a2','wrong')">رسالة متوقعة من جهة أعرفها وأتحقق منها عبر تطبيقها الرسمي</button>
+      <button onclick="show('a2','right')">عنوان غريب أو تهجئة غير معتادة مع طلب كلمة المرور بشكل عاجل</button>
+      <button onclick="show('a2','wrong')">الدخول إلى الموقع بكتابة عنوانه الرسمي بنفسي</button>
+    </div>
+    <div id="a2" class="result"></div>
+  </section>
+
+  <section class="card">
+    <h2>الموقف الثالث: وصلتك رسالة من صديق</h2>
+    <p>تطلب منك الرسالة إعادة إرسال خبر عاجل، لكنها بلا مصدر واضح. ماذا تفعل؟</p>
+    <div class="options">
+      <button onclick="show('a3','wrong')">أنشرها فوراً حتى يستفيد الجميع</button>
+      <button onclick="show('a3','right')">أبحث عن الخبر في مصادر موثوقة ولا أنشره قبل التحقق</button>
+    </div>
+    <div id="a3" class="result"></div>
+  </section>
+
+  <section class="card">
+    <h2>قواعد ذهبية للحماية</h2>
+    <ul>
+      <li>افحص اسم النطاق بعناية، ولا تعتمد على شكل الرابط أو الشعار فقط.</li>
+      <li>لا تشارك كلمات المرور أو رموز التحقق مع أي شخص.</li>
+      <li>فعّل المصادقة الثنائية واستخدم كلمة مرور قوية وفريدة.</li>
+      <li>افتح الموقع الرسمي بنفسك بدلاً من اتباع رابط غير متوقع.</li>
+      <li>تحقق من الأخبار من أكثر من مصدر موثوق قبل إعادة نشرها.</li>
+      <li>إذا شككت في رسالة، اسأل شخصاً موثوقاً أو تواصل مع الجهة عبر قنواتها الرسمية.</li>
+    </ul>
+  </section>
+  <section class="card">
+    <h2>اختبر فهمك</h2>
+    <p>ما العبارة التي تلخص الوعي الرقمي؟</p>
+    <button class="primary" onclick="show('a4','right')">تحقّق قبل أن تضغط، وفكّر قبل أن تنشر</button>
+    <button class="secondary" onclick="show('a4','wrong')">كل ما يصلني عبر الرسائل صحيح</button>
+    <div id="a4" class="result"></div>
+  </section>
+</main>
+<footer>إعداد تعليمي للتوعية بالأمن السيبراني والشائعات المعلوماتية — لا يجمع بيانات ولا ينفذ أي اختراق.</footer>
+<script>
+function show(id,kind){
+ const el=document.getElementById(id);
+ el.style.display='block';
+ el.className='result '+(kind==='right'?'good':'bad');
+ el.textContent=kind==='right'
+ ?'أحسنت! هذا هو التصرف الأكثر أماناً. تحقّق من المصدر ولا تشارك معلوماتك.'
+ :'ليس الخيار الآمن. توقّف، وتحقق من المصدر عبر قناة رسمية، ولا تشارك بياناتك.';
+}
+</script>
+</body>
+</html>
